@@ -60,23 +60,20 @@ function ColorSelector() {
                     </div>
                 )}
                 <div className="w-screen h-screen grid grid-cols-12 bg-white container mx-auto">
-                    <div className='col-span-12 flex justify-center p-6'>
-                        <h1 className='text-slate-700 text-6xl'>Tailwind Background Color Selector</h1>
+                    <div className='col-span-12 flex justify-center p-2 md:p-6'>
+                        <h1 className='text-slate-700 text-3xl font-bold text-center md:text-6xl'>Tailwind Background Color Selector</h1>
                     </div>
                     <div className='col-span-12 flex justify-center p-2'>
-                        <h1 className='text-slate-700 text-3xl font-bold uppercase pop-in'>Shades Of {selectedColor}</h1>
+                        <h1 className='text-slate-700 text-xl md:text-3xl font-bold uppercase pop-in'>Shades Of {selectedColor}</h1>
                     </div>
 
-                    <div className="col-span-10 p-6 grid grid-cols-12 transition-all">
+                    <div className="col-span-12 md:col-span-10 p-6 grid grid-cols-12 transition-all gap-3 md:gap-0">
                         {selectedColor &&
                             colorToClasmdap[selectedColor].map((className, index) => {
-                                const totalShades = colorToClasmdap[selectedColor].length;
-                                const colSpan = Math.floor(12 / totalShades);
-
                                 return (
                                     <div
                                         key={`${selectedColor}-${index}`}
-                                        className={`cursor-pointer w-full ${className} col-span-${colSpan} pop-in`}
+                                        className={`cursor-pointer w-full h-full ${className} aspect-square col-span-3 md:col-span-1 pop-in`}
                                         title={className}
                                         style={{ animationDelay: `${index * 50}ms` }}
                                         onClick={handleCopy}
@@ -85,11 +82,11 @@ function ColorSelector() {
                             })}
                     </div>
 
-                    <div className="h-100 overflow-auto col-span-2 flex flex-col m-6 mr-0 pr-6 custom-scroll">
+                    <div className="h-100 overflow-auto col-span-12 md:col-span-2 flex gap-1 md:flex-col m-6 mr-0 pr-6 custom-scroll">
                         {Object.keys(colorToClasmdap).map((color) => (
                             <button
                                 key={color}
-                                className={`w-full p-2 mb-4 rounded text-white capitalize ${colorToClasmdap[color][4]}`}
+                                className={`w-24 md:w-full p-2 mb-4 rounded text-white capitalize ${colorToClasmdap[color][4]}`}
                                 onClick={() => setSelectedColor(color)}
                             >
                                 {color}
